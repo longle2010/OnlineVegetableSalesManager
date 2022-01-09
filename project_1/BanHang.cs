@@ -38,7 +38,15 @@ namespace project_1
         }
         private void kho()
         {
-
+            string kho = "select * from kho where Soluong > 0";
+            SqlCommand cmd = new SqlCommand(kho, conn);
+            SqlDataReader dr = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(dr);
+            dr.Dispose();
+            comboBox2.DisplayMember = "TenHang";
+            comboBox2.ValueMember = "MaHang";
+            comboBox2.DataSource = dt;
         }
         private void thoat_Click(object sender, EventArgs e)
         {
