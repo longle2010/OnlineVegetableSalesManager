@@ -29,7 +29,12 @@ namespace project_1
         }
         public void hienthi()
         {
-            
+            string sqlSelect = "select MaHang as 'Mã Sản phẩm',TenHang as 'Tên sản phẩm',GiaTien as 'Giá',SoLuong as 'Số lượng' from kho";
+            SqlCommand cmd = new SqlCommand(sqlSelect, conn);
+            SqlDataReader dr = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(dr);
+            dtkho.DataSource = dt;
         }
         private void kho()
         {
