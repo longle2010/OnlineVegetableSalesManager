@@ -80,6 +80,7 @@ namespace project_1
                 hienthi();
                 MessageBox.Show("Bán thành công", "Bán không thành công", MessageBoxButtons.OK);
             }
+        }
         private void BanHang_FormClosing(object sender, FormClosingEventArgs e)
         {
             conn.Close();
