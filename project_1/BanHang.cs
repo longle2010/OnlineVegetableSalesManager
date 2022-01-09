@@ -54,8 +54,32 @@ namespace project_1
         }
         private void order_Click(object sender, EventArgs e)
         {
-           
-        }
+            if (sl1.Text.Length == 0)
+            {
+                MessageBox.Show("Vui lòng nhập số lượng");
+                return;
+            }
+            else
+            {
+                string sqlinsert = "Insert into banhang values (@MaHang,@SoLuong,GETDATE(),@KieuThanhToan)";
+                string sqlupdate = "Update kho set " +
+                    "Soluong = SoLuong - @SoLuong where MaHang = @MaHang";
+
+                SqlCommand cmd = new SqlCommand(sqlinsert, conn);
+                cmd.Parameters.AddWithValue("MaHang", comboBox2.SelectedValue);
+                cmd.Parameters.AddWithValue("SoLuong", sl1.Text);
+                cmd.Parameters.AddWithValue("KieuThanhToan", comboBox1.Text);
+
+                SqlCommand cmd1 = new SqlCommand(sqlupdate, conn);
+                cmd1.Parameters.AddWithValue("MaHang", comboBox2.SelectedValue);
+                cmd1.Parameters.AddWithValue("SoLuong", sl1.Text);
+
+                cmd.ExecuteNonQuery();
+                cmd1.ExecuteNonQuery();
+
+                hienthi();
+                MessageBox.Show("Bán thành công", "Bán không thành công", MessageBoxButtons.OK);
+            }
         private void BanHang_FormClosing(object sender, FormClosingEventArgs e)
         {
             conn.Close();
