@@ -135,7 +135,7 @@ namespace project_1
         }
         public void clear()
         {
-            mah1.Text = "";
+            mah1.Text = " ";
             mah2.Text = "";
 
 
