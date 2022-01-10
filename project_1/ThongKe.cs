@@ -21,8 +21,7 @@ namespace project_1
 
         private void Tke_Click(object sender, EventArgs e)
         {
-            
-           
+         
         }
         SqlConnection conn;
         private void ThongKe_Load(object sender, EventArgs e)
