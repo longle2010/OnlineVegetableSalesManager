@@ -21,7 +21,15 @@ namespace project_1
 
         private void Tke_Click(object sender, EventArgs e)
         {
-         
+            string ThongKe = "Select * from banhang where  CONVERT(varchar,NgayBan) = @NgayBan";
+            SqlCommand cmd = new SqlCommand(ThongKe, conn);
+
+            cmd.Parameters.AddWithValue("NgayBan", dateTimePicker1.Text);
+            cmd.ExecuteNonQuery();
+            SqlDataReader dr = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(dr);
+            dataGridView1.DataSource = dt;
         }
         SqlConnection conn;
         private void ThongKe_Load(object sender, EventArgs e)
@@ -33,7 +41,16 @@ namespace project_1
 
         private void tknn_Click(object sender, EventArgs e)
         {
-            
+            string ThongKe = "Select * from kho where  CONVERT(varchar,NgayNhap) = @NgayNhap";
+            SqlCommand cmd = new SqlCommand(ThongKe, conn);
+
+            cmd.Parameters.AddWithValue("NgayNhap", dateTimePicker1.Text);
+            cmd.ExecuteNonQuery();
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(dr);
+            dataGridView1.DataSource = dt;
         }
 
         private void back_Click(object sender, EventArgs e)
